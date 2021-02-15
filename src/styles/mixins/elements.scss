@@ -1,0 +1,75 @@
+@import '../colors';
+
+@mixin appearance ($value: none) {
+  -webkit-appearance:     $value;
+  -moz-appearance:        $value;
+  -ms-appearance:         $value;
+  -o-appearance:          $value;
+  appearance:             $value;
+}
+
+@mixin blackish_shadow($spread: 20px, $blur: -15px, $transp: 0) {
+  box-shadow: 0 0 $spread $blur transparentize($color: $blackish, $amount: $transp);
+}
+
+@mixin qtity_btns() {
+  width: 7rem;
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3rem;
+
+  button {
+    &:first-of-type {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:last-of-type {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &.deactivated {
+      background: lighten(#F4F4F4, 2%) !important;
+      color: lighten($darkGray, 20%) !important;
+    }
+
+    border-radius: .4rem;
+    background: $lightGray;
+    border-width: 0;
+    color: $darkGray;
+    font-size: 1.3rem;
+    width: 36px;
+    padding: 0;
+    height: 33px;
+  }
+}
+
+@mixin rounded_btn--blue() {
+  @include rounded_btn;
+  color: #fff;
+  border-width: 0;
+  background: $blue;
+}
+
+
+@mixin rounded_btn() {
+  font-size: .7rem;
+  letter-spacing: -1px;
+  font-weight: bolder;
+  width: 6rem;
+  padding: .8rem .5rem;
+  border-radius: 1.8rem;
+}
+
+@mixin btn-blue($width: 160px) {
+  width: $width;
+  border-radius: 9px;
+  background: #2391EF linear-gradient(251deg, #2391EF 0%, #2C60ED 96%, #084BBF 100%) 0% 0% no-repeat padding-box;
+  padding: .95rem 0;
+  border-width: 0;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}

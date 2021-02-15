@@ -1,0 +1,22 @@
+<main class="main-content">
+    <section class="grayish-bg">
+        <app-nav [homepageStyles]="true"></app-nav>
+
+        <app-homepage-ui
+            [regions]="stateS.regions$ | async"
+            [regionActive]="stateS.regionActive$ | async"
+            [activeTranslation]="stateS.activeTranslation$ | async"
+            [accounts]="stateS.accounts$ | async"
+            [currency]="stateS.currency$ | async"
+            [currencyExchangeRate]="stateS.currencyExchangeRateToDollar$ | async"
+            (onRegionSelected)="stateS.updateAccountsBasedOnRegion($event)"
+            (addToCart)="cartS.addToCart($event)"
+            (removeFromCart)="cartS.removeFromCart($event)"
+            (changeAccountQuantity)="stateS.changeAccountSelectedQuantity($event)">
+        </app-homepage-ui>
+    </section>
+
+    <app-footer></app-footer>
+</main>
+
+<app-cart [contentType]="'homepage'"></app-cart>

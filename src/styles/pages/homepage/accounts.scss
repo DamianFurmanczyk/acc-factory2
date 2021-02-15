@@ -1,0 +1,104 @@
+.accounts {
+    margin: 4.5% 0;
+    padding: 2.5rem 0;
+
+    &_wrapper {
+        @include flex-container;
+        align-items: stretch;
+    }
+}
+
+.account {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 20px;
+    padding: 1.4rem 1rem;
+    border-radius: .6rem;
+    background: #fff;
+    text-align: center;
+    min-width: 185px;
+
+    figure {
+        height: 150px;
+        display: flex;
+        align-items: center;
+    }
+    
+    &_upper-text {
+        margin-top: .6rem;
+
+        span {
+            white-space: nowrap;
+            line-height: 1.5;
+            font-size: .8rem;
+            font-weight: bold;
+            &::first-line {
+                font-size: .9rem;
+            }
+        }
+        
+        b {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-bottom: 1.2rem;
+            font-weight: bolder;
+            font-size: 1.7rem;
+        }
+    }
+
+    &_lower-text {
+        font-size: .9rem;
+        flex: 1 0 auto;
+        font-weight: lighter;
+        line-height: 1.5;
+    }
+
+    .quantity-btns-wrapper {
+        margin: 1.5rem 0 1.1rem 0;
+    }
+
+    &_actions {
+        width: 95%;
+        button {
+            @include btn-blue;
+            font-size: .9rem;
+            padding: .8rem 0;
+            width: 95%;
+
+            &.outOfStock {
+                background: $gray2;
+                color: $darkGray2;
+            }
+        }
+    }
+}
+
+@media (min-width: 1940px) {
+    .account {
+        min-width: 215px;
+    }
+}
+
+@media (max-width: 1430px) {
+    .accounts {
+        width: 98%;
+        margin: 6% auto;
+        
+        &_wrapper {
+            justify-content: unset;
+            padding-bottom: 1rem;
+        }
+    }
+
+    .account {
+        &:first-of-type {
+            margin-left: -12%;
+        }
+
+        &:last-of-type {
+            margin-right: 4rem;
+        }
+    }
+}

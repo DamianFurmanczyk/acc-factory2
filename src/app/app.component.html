@@ -1,0 +1,5 @@
+<router-outlet></router-outlet>
+<app-cookie-consent-bar
+    *ngIf="showCookiesBar"
+    (dismissCookiesBarAndSetCookie)="setCookiesConsentCookie()">
+</app-cookie-consent-bar>

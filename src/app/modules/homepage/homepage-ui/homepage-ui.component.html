@@ -1,0 +1,72 @@
+<section class="hero">
+  <video autoplay loop>
+    <source src="assets/fabryka.mp4" type="video/mp4">
+  </video>
+  <!-- <div class="hero_content-wrapper">
+    <h1>
+      If you want to buy a lot of accounts go to
+    </h1>
+    <br>
+    <button routerLink="/bulk">Bulk</button>
+  </div> -->
+</section>
+
+<section class="regions">
+  <h2> {{ activeTranslation.homepage.regions.h }}</h2>
+
+  <perfect-scrollbar>
+    <div class="regions_wrapper">
+
+      <figure class="region" [ngClass]="{'active': regionActive == region.name}" (click)="onRegionSelected.emit(region.name)" class="region" *ngFor="let region of regions">
+        <figcaption>
+          {{region.name}}
+        </figcaption>
+
+        <img [src]="'assets/img/' + region.name + '.png'" [alt]="region.name">
+      </figure>
+
+    </div>
+  </perfect-scrollbar>
+
+</section>
+
+<section class="accounts">
+  <perfect-scrollbar>
+    <div class="accounts_wrapper">
+
+      <div class="account" *ngFor="let acc of accounts">
+        <figure>
+          <img [src]="'assets/img/' + acc.name + (acc.name == 'Capsules' ? '.png' : '.svg')" alt="essence_img">
+        </figure>
+
+        <p class="account_upper-text">
+          <span> {{regionActive | uppercase}} {{activeTranslation.homepage.accounts[acc.name].h}} <br>
+            {{activeTranslation.homepage.accounts[acc.name].s}}
+          </span>
+          <br>
+          <b>{{acc['price_usd'] * currencyExchangeRate | toFixed}} {{currencyMap[currency]}}</b>
+        </p>
+
+        <p class="account_lower-text">
+          {{activeTranslation.homepage.accounts[acc.name].description}}
+        </p>
+
+        <app-quantity-btns
+          [account]="acc"
+          (quantityChange)="changeAccountQuantity.emit($event)">
+        </app-quantity-btns>
+
+        <div class="account_actions">
+          <button *ngIf="acc.count == 0" class="outOfStock">
+            {{activeTranslation.homepage.accounts.btnText.unavailable}}
+          </button>
+          <button (click)="addToCart.emit(acc)" *ngIf="acc.count > 0">
+            {{activeTranslation.homepage.accounts.btnText.available}}
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </perfect-scrollbar>
+
+</section>

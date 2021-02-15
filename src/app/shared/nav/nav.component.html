@@ -1,0 +1,9 @@
+<app-nav-ui
+    [homepageStyles]="homepageStyles"
+    [reviewStyles]="reviewStyles"
+    (currencyChange)="stateS.changeCurrency($event)"
+    [countrySetter]="stateS.usersCountry$ | async"
+    [activeTranslation]="stateS.activeTranslation$ | async"
+    (translationChange)="stateS.onActiveTranslationChange($event)"
+    [currencySetHandler]="stateS.currency$ | async">
+</app-nav-ui>

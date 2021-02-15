@@ -1,0 +1,31 @@
+@import './elements.scss';
+@import './blocks.scss';
+
+.checkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: calc(100vw - 450px);
+
+    &_go-back {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: $gray;
+      text-decoration: none;
+    }
+
+    &_heading {
+        font-size: 1.7rem;
+        font-weight: bolder;
+        text-align: center;
+        margin-bottom: 2rem;
+
+        &--last {
+            font-size: 1.4rem;
+            margin-bottom: 1.7rem;
+        }
+    }
+}

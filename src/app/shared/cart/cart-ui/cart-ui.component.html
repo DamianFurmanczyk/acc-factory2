@@ -1,0 +1,101 @@
+<aside class="cart" [ngClass]="{'active': cartActiveStyles,
+    'mediumBreakdown': mediumHideBreakdownFlag, '--bulk': contentType2 == 'bulk', '--checkout': contentType2 == 'checkout'}">
+    <span (click)="cartActiveStyles = !cartActiveStyles" class="cart_toggle"><img src="assets/img/shopping-cart-solid.svg" alt="cart-toggle"></span>
+
+    <div class="toggle" *ngIf="contentType2 == 'checkout' && showCartsToggle">
+      <span>Standard</span>
+
+      <input class="tgl tgl-flat" id="cb4" type="checkbox" />
+      <label class="tgl-btn" for="cb4" [ngClass]="{'active' : bulkActiveFlag}" (click)="swapCarts()"></label>
+
+      <span>Bulk</span>
+    </div>
+
+  <perfect-scrollbar>
+    <div class="cart_top-side">
+
+      <h3>Your Cart
+        <!-- <ng-container *ngIf="contentType2 == 'checkout' && showCartsToggle">
+
+        (<span (click)="swapCarts()" [ngClass]="{'active': bulkActiveFlag}">Bulk</span>)
+
+      </ng-container> -->
+     </h3>
+      <legend *ngIf="bulkActiveFlag">
+        <p>Small order (10+ total accounts) <span>Green Price</span></p>
+        <p>Medium Order (100+ total accounts) <span>Blue Price</span></p>
+        <p>Large Order (400+ total accounts) <span>Purple price</span></p>
+        <p>1000+total accs <span>Contact Us for individual price</span></p>
+      </legend>
+
+      <ul *ngIf="cart.accounts.length > 0" class="cart_order-list">
+
+        <li *ngFor="let acc of cart.accounts" class="cart_order-list-item">
+          <div class="item-desc">
+            <span class="quantity">{{acc.selQuantity}}x</span>
+            <p> {{acc.name}} {{regionIdToNameMap[acc.region_id]}}
+              <!-- <small>{{acc.slug | slice:20}}</small> -->
+            </p>
+          </div>
+
+          <app-quantity-btns [account]="acc" [accountQuantityNoDisplay]="true"
+            (quantityChange)="changeCartAccountQuantity.emit($event)">
+          </app-quantity-btns>
+
+          <span class="price">{{+acc.price_usd *currencyExchangeRate * acc.selQuantity | toFixed}}
+            {{currencyMap[currency]}}</span>
+          <span (click)="removeFromCart.emit(acc)" class="fa fa-trash"></span>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <p *ngIf="cart.accounts.length == 0" class="cart_empty-text">Actually nothing is here <br>
+      <small>But you can change it</small>
+    </p>
+
+    <div class="cart_checkout">
+
+      <div class="cart_checkout-separator"></div>
+
+      <p class="cart_checkout-cost">Total cost
+
+        <span *ngIf="contentType2 != 'checkout'" class="right">{{currencyMap[currency]}} {{cartTotalPriceSet | toFixed}}</span>
+
+        <span *ngIf="contentType2 == 'checkout'" class="right">
+          {{currencyMap[currency]}} {{cartTotalPriceSet + cartTotalPriceSet*(vat/100) +
+             (feeText == 'Paypal fee' ? cartTotalPriceSet*paypalFee['percentage'] : fee) | toFixed}}
+        </span>
+
+      </p>
+
+      <ul *ngIf="contentType2 == 'checkout'" class="cart_total-cost-list">
+
+        <li>Subtotal <span> {{cartTotalPriceSet | toFixed}} </span></li>
+        <li>{{feeText}} <span> {{(feeText == 'Paypal fee' ? cartTotalPriceSet*paypalFee['percentage'] : fee) | toFixed}} </span></li>
+        <li>Vat% <span>{{ cartTotalPriceSet*(vat/100) | toFixed }}</span></li>
+
+      </ul>
+
+      <button (click)="contentType2 == 'checkout' && submitPayment();"
+      *ngIf="contentType2 != 'bulk' && contentType2 != 'homepage' && !checkoutFormStateErrorMsg">
+        {{contentType2 == 'checkout' ? "Proceed to payment" : "Buy now"}}</button>
+
+      <button (click)="contentType2 == 'checkout' && submitPayment();" class="disabled" disabled="disabled"
+      *ngIf="contentType2 == 'checkout' && checkoutFormStateErrorMsg">
+        {{checkoutFormStateErrorMsg}}</button>
+
+      <button *ngIf="contentType2 == 'bulk'" (click)="stateS.appropriateCartToShow = 'bulk'" [disabled]="buttonDisabled"
+      [routerLink]="['/checkout']" [ngClass]="{'disabled': buttonDisabled}">
+        {{buttonDisabled ? ">10 accounts needed to proceed" : "Proceed to payment"}}
+      </button>
+
+      <button *ngIf="contentType2 == 'homepage'" (click)="stateS.appropriateCartToShow = 'main'" [routerLink]="['/checkout']"
+      routerLinkActive="router-link-active"  [disabled]="!buttonDisabled" [ngClass]="{'disabled': !buttonDisabled}">
+        {{!buttonDisabled ? "Add an account to cart to proceed" : "Proceed to payment"}}
+      </button>
+
+    </div>
+    </perfect-scrollbar>
+</aside>

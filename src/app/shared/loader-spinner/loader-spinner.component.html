@@ -1,0 +1,58 @@
+<div class="loader-fixed-bg" *ngIf="fixedLoader"></div>
+
+  <div class="loader-wrapper" [ngClass]="{'fixed': !!fixedLoader}">
+    <svg
+      class="loader"
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      height="50"
+      width="50"
+    >
+      <defs>
+        <linearGradient id="Gradient1" gradientTransform="rotate(90)">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="100%" stop-color="#7f9cb7" />
+        </linearGradient>
+        <linearGradient id="Gradient2" gradientTransform="rotate(90)">
+          <stop offset="0%" stop-color="#003a70" />
+          <stop offset="100%" stop-color="#7f9cb7" />
+        </linearGradient>
+        <pattern
+          id="Pattern"
+          x="0"
+          y="0"
+          width="50"
+          height="50"
+          patternUnits="userSpaceOnUse"
+        >
+          <g transform="rotate(0, 25, 25)">
+            <rect
+              shape-rendering="crispEdges"
+              x="0"
+              y="0"
+              width="50"
+              height="100"
+              fill="url(#Gradient1)"
+            />
+            <rect
+              shape-rendering="crispEdges"
+              x="25"
+              y="0"
+              width="25"
+              height="50"
+              fill="url(#Gradient2)"
+            />
+          </g>
+        </pattern>
+      </defs>
+      <circle
+        cx="25"
+        cy="25"
+        r="23"
+        stroke="#003a70"
+        style="stroke: url(#Pattern);"
+        stroke-width="2"
+        fill="transparent"
+      />
+    </svg>
+  </div>

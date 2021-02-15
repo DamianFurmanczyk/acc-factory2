@@ -1,0 +1,116 @@
+.reviews {
+  margin-top: 100px;
+  padding-top: 6%;
+}
+
+.btns-wrapper {
+  @include container;
+  display:  flex;
+  justify-content: center;
+  margin-bottom: 3%;
+
+  button {
+    @include rounded_btn--blue;
+    padding: 1.3rem 2.2rem;
+    border-radius: 3.5rem;
+    font-size: 1.1rem;
+    letter-spacing: .05rem;
+    font-weight: lighter;
+    width: auto;
+    margin-left: 1.5rem;
+  }
+}
+
+.reviews-sort {
+  @include rounded_btn--blue;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: .8rem 2.2rem;
+  border-radius: 3.5rem;
+  width: 133px;
+  position: relative;
+  z-index: 50;
+
+  &:hover {
+    border-radius: 2rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: #4E6ED9;
+
+    .icon--expand {
+      transform: rotate(-180deg);
+    }
+
+    ul {
+      display: block;
+    }
+  }
+  .icon--expand {
+    height: 15.5px;
+    filter: invert(99%) sepia(99%) saturate(2%) hue-rotate(177deg) brightness(111%) contrast(100%);
+    display: inline-block;
+    margin-left: .5rem;
+  }
+
+  ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: calc(100% - 2rem);
+    left: 0;
+    margin-top: -.8rem;
+    padding: .7rem 1rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    background: #4E6ED9;
+    font-size: .85rem;
+    text-align: right;
+    color: #879CE5;
+    line-height: 2.3;
+
+    li {
+      padding-right: 28%;
+      cursor: pointer;
+    }
+  }
+
+  p, ul {
+    font-weight: lighter;
+    letter-spacing: .3px;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  small {
+    font-size: .7rem;
+    letter-spacing: .05rem;
+    font-weight: lighter;
+    margin-bottom: .5rem;
+    display: inline-block;
+  }
+
+  label {
+    position: relative;
+    &::after {
+      content: '>';
+      position: absolute;
+      right: .3rem;
+      top: .4rem;
+    }
+  }
+}
+
+@media (max-width: 660px) {
+  .btns-wrapper {
+    flex-direction: column-reverse;
+    align-items: center;
+
+    button {
+      margin: 0 0 1rem 0;
+    }
+  }
+}

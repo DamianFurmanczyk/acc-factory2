@@ -1,0 +1,29 @@
+<section class="bulk">
+    <div class="regions-stats-wrapper">
+        <div *ngFor="let accountsData of accountsGrouped" class="region-stats">
+
+            <figure>
+                <img [src]="'assets/img/' + regionIdToNameMap[accountsData.regionId] + '.png'">
+                <figcaption>
+                    {{regionIdToNameMap[accountsData.regionId]}}
+                </figcaption>
+            </figure>
+
+            <div class="region-stats_stat" *ngFor="let account of accountsData.accounts">
+                <span class="region-stats_stat-essence">
+                    {{mapNameToDust[account.name]}}
+                </span>
+                <div class="region-stats_stat-amount-input-wrapper">
+                    <input class="region-stats_stat-amount-input" (focus)="updateCurrentQuantitySel($event)" (input)="updateCurrentQuantitySel($event)" type="text" [disabled]="account.codes_count == 0" [placeholder]="account.codes_count == 0 ? 'unavailable' : 'up to ' + account.codes_count">                    
+                    <span class="fa fa-plus" (click)="addToCartLocal(account)"></span>
+                </div>
+                <ul class="region-stats_stat-list">
+                    <li> {{account.small * currencyExchangeRate | toFixed}} {{currencyMap[currency]}} </li>
+                    <li> {{account.medium * currencyExchangeRate | toFixed}} {{currencyMap[currency]}} </li>
+                    <li> {{account.large * currencyExchangeRate | toFixed}} {{currencyMap[currency]}} </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>

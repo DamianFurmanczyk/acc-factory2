@@ -1,0 +1,63 @@
+<footer class="main-footer">
+  <div class="main-footer_content-wrapper">
+      <figure>
+          <img src="assets/img/accountLogo.svg" alt="Accounts Factory logo">
+          <!-- <figcaption>Accounts Factory</figcaption> -->
+          <p>{{activeTranslation.footer.accFactoryDescription}}</p>
+      </figure>
+
+      <div #faqColumn class="main-footer_faq">
+          <h4>FAQ</h4>
+          <dl>
+              <ul>
+                  <li>
+                      <dt class="trigger">{{activeTranslation.footer.faq[0].h}}</dt>
+                      <dd>{{activeTranslation.footer.faq[0].des}}</dd>
+                  </li>
+                  <li>
+                      <dt class="trigger">{{activeTranslation.footer.faq[1].h}}</dt>
+                      <dd>{{activeTranslation.footer.faq[1].des}}</dd>
+                  </li>
+                  <li>
+                      <dt class="trigger">{{activeTranslation.footer.faq[2].h}}</dt>
+                      <dd>{{activeTranslation.footer.faq[2].des}}</dd>
+                  </li>
+                  <li>
+                      <dt class="trigger">{{activeTranslation.footer.faq[3].h}}</dt>
+                      <dd>{{activeTranslation.footer.faq[3].des}}</dd>
+                  </li>
+                  <li>
+                      <dt class="trigger">{{activeTranslation.footer.faq[4].h}}</dt>
+                      <dd>{{activeTranslation.footer.faq[4].des}}</dd>
+                  </li>
+              </ul>
+          </dl>
+      </div>
+
+
+      <div #linksCol class="links-lists-column">
+        <ul>
+
+            <li (click)="navigateToRoute('/')">{{activeTranslation.footer.linksLists.first.homepage}}</li>
+
+              <li (click)="navigateToRoute('/tos')">{{activeTranslation.footer.linksLists.first.thermsNconditions}}</li>
+
+              <li (click)="scrollS.navigateAndScrollToElem('.privacy-policy', '/tos');">{{activeTranslation.footer.linksLists.first.privacyPolicy}}</li>
+        </ul>
+
+        <ul>
+
+          <li (click)="navigateToDiscordLink()">{{activeTranslation.footer.linksLists.second.discord}}</li>
+
+          <li>{{activeTranslation.footer.linksLists.second.facebook}}</li>
+          <li class="trigger">{{activeTranslation.footer.linksLists.second.emailUs}}<br>
+            <ul class="expendable-list">
+              <li>office@accounts4life.com</li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+  </div>
+</footer>

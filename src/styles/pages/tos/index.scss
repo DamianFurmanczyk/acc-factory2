@@ -1,0 +1,38 @@
+.tos {
+    @include container(1400px);
+    padding-top: 150px;
+
+    &_dl {
+        h3 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1.7rem;
+            font-weight: bolder;
+
+            &:not(:first-of-type) {
+                margin-top: 6rem;
+            }
+
+            small {
+                font-size: .9rem;
+                color: $gray;
+            }
+        }
+
+        dt {
+            font-weight: bolder;
+            font-size: 1.4rem;
+            margin: 3.4rem 0 2.3rem 0;
+            text-align: center;
+        }
+
+        dd {
+            line-height: 2;
+            text-align: justify;
+        }
+    }
+
+    & dl &_contact-dd {
+        text-align: center;
+    }
+}

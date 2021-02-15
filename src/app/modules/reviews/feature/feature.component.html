@@ -1,0 +1,20 @@
+<section class="grayish-bg">
+  <app-nav [reviewStyles]="true" ></app-nav>
+</section>
+
+<app-reviews-list
+  [activeTranslation]="stateS.activeTranslation$ | async"
+  (toggleAddReviewForm)="onToggleAddReviewForm()"
+  [reviewsList]="reviews$ | async"
+>
+</app-reviews-list>
+
+<app-add-review-form
+  *ngIf="showAddReviewFormFlag"
+  [activeTranslation]="stateS.activeTranslation$ | async"
+  (addReview)="onAddReview($event)"
+  (toggleAddReviewForm)="onToggleAddReviewForm()"
+>
+</app-add-review-form>
+
+<app-footer></app-footer>

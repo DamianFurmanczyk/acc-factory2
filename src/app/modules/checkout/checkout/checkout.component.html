@@ -1,0 +1,23 @@
+<main class="main-content main-content--medium-breakpoint">
+    <section class="grayish-bg">
+        <app-checkout-ui
+          [countries]="stateS.countries$ | async"
+          [langActive]="stateS.activeTranslation$ | async"
+          [usersCountry]="stateS.usersCountry$ | async"
+          [usersCountryName]="stateS.usersCountryName$ | async"
+          [cartTotalPrice]="stateS.cartTotalPrice$ | async"
+          [currency]="stateS.currency$ | async"
+          [paypalFee]="stateS.paypalfee$ | async"
+          [feeData]="stateS.feeData$ | async"
+          [checkoutFormState]="stateS.checkoutFormState$ | async"
+          [vat]="stateS.vatRate$ | async"
+          [checkoutFormStateErrorMsg]="stateS.checkoutFormStateErrorMsg$ | async"
+          [currency]="stateS.currency$ | async"
+          [vat]="stateS.vatRate$ | async"
+          [selectedCountryCode]="stateS.selectedCountryCode$ | async"
+          (getVat)="stateS.loadVatRate($event)">
+      </app-checkout-ui>
+    </section>
+</main>
+
+<app-cart [mediumHideBreakdownFlag]="true" [contentType]="'checkout'"></app-cart>

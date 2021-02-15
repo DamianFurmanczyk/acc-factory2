@@ -1,0 +1,11 @@
+@mixin container($width: 1300px) {
+  max-width: $width;
+  width: 80%;
+  margin: 0 auto;
+}
+
+@mixin flex-container($width: 1300px) {
+  @include container($width);
+  display: flex;
+  justify-content: space-around;
+}

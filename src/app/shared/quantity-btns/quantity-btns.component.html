@@ -1,0 +1,7 @@
+<div class="quantity-btns-wrapper" [ngClass]="{'quantity-btns-wrapper--cart': accountQuantityNoDisplay}">
+    <button [ngClass]="{'deactivated': account.selQuantity < 2}"  (click)="quantityChange.emit({acc: account, quantityAdded: -1})">-</button>
+    {{!accountQuantityNoDisplay ? account.selQuantity : ''}}
+    <button [ngClass]="{'deactivated': account.count ? account.selQuantity > account.count - 1 : account.selQuantity > account.codes_count - 1}" 
+        (click)="!(account.count ? account.selQuantity > account.count - 1 : account.selQuantity > account.codes_count - 1) && 
+        quantityChange.emit({acc: account, quantityAdded: 1})">+</button>
+</div>

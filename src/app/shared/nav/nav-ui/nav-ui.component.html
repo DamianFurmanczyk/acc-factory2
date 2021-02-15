@@ -1,0 +1,48 @@
+<nav [ngClass]="{'homepage': homepageStyles, 'active': navActiveFlag, 'review': reviewStyles}" class="nav">
+    <div class="nav_content-wrapper">
+        <img src="assets/img/accountLogo.svg" alt="Accounts Factory logo" routerLink="/" class="nav_logo">
+
+        <div class="nav_ulNdropdown">
+            <ul class="nav_links-list">
+
+                <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav_link">{{activeTranslation.nav.home}}</li>
+                <!-- <li routerLink="/bulk" routerLinkActive="active" class="nav_link">Bulk</li> -->
+                <li routerLink="/reviews" routerLinkActive="active" class="nav_link">{{activeTranslation.nav.reviews}}</li>
+                <li routerLink="/tos" class="nav_link nav_link--dropdown">
+                  {{activeTranslation.nav.more}}
+                    <ul>
+                        <li routerLink="/tos">{{activeTranslation.nav.tos}}</li>
+                        <li (click)="scrollS.navigateAndScrollToElem('.privacy-policy', '/tos');"> {{activeTranslation.nav.privacyPolicy}} </li>
+                        <li *ngIf="showHomepageLink" routerLink="/">{{activeTranslation.nav.home}}</li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <div class="nav_currency-dropdowns-wrapper">
+
+              <div class="nav_currency-dropdown nav_currency-dropdown--flags">
+                <img [src]="'assets/img/flags/' + flagOptionActive +'.png'" [alt]="flagOptionActive">
+                <span class="fa fa-chevron-down"></span>
+                <ul>
+                  <li *ngFor="let lang of flagOptionsToDisplay" (click)="toggleLang(lang)"> <img [src]="'assets/img/flags/' + lang + '.png'" [alt]="lang"> </li>
+                </ul>
+              </div>
+
+            <div class="nav_currency-dropdown">
+                {{activeCurrency}}
+                <span class="fa fa-chevron-down"></span>
+                <ul>
+                    <li *ngFor="let option of currencyOptionsToDisplay" (click)="currencyChange.emit(option)">{{option}}</li>
+                </ul>
+              </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <span #hamburger class="hamburger" [ngClass]="{'hamburger--open': navActiveFlag}" (click)="navActiveFlag = !navActiveFlag" href="#">
+        <div class="hamburger__inner"></div>
+      </span>
+</nav>

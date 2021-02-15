@@ -1,0 +1,12 @@
+<div class="custom-select">
+  <select>
+    <option [value]="usersCountry"> <p> {{usersCountryName || usersCountry}}
+      <span class="span-right">
+        {{countryVatObjMap[usersCountryName || usersCountry] ?
+        countryVatObjMap[usersCountryName || usersCountry] + ' vat%' : 0 + ' vat%'}}
+      </span></p>
+    </option>
+    <option *ngFor="let country of countries" [value]="country['name']"><p>{{country['name']}}
+      <span class="span-right">{{countryVatObjMap[country['name']] ? countryVatObjMap[country['name']] + ' vat%' : 0 + ' vat%'}}</span></p></option>
+  </select>
+</div>

@@ -1,0 +1,49 @@
+.order-summary {
+    @include container(450px);
+    display: none;
+
+    h4 {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+        font-weight: bolder;
+        margin-bottom: 1.5rem;
+    }
+
+    button {
+      @include btn-blue(100%);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      padding: 1.2rem 14px;
+
+      &.disabled {
+          background: $gray;
+      }
+    }
+
+    &_list {
+        font-size: 1.1rem;
+        margin: .8rem 0 3.5rem 0;
+        padding-left: 10px;
+        border-left: 2px solid lighten(#05050580, 40%);
+        width: calc(100% - 12px);
+        font-size: .9rem;
+    
+        li {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            color: darken(#05050580, 30%);
+    
+            &:nth-of-type(2) {
+                margin: .8rem 0;
+            }
+        }
+    }
+}
+
+@media (max-width: $m1) {
+    .order-summary {
+        display: block;
+    }
+}

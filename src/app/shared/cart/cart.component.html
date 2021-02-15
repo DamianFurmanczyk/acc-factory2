@@ -1,0 +1,21 @@
+<app-cart-ui
+    [mediumHideBreakdownFlag] ="mediumHideBreakdownFlag"
+    [currency]="stateS.currency$ | async"
+    [paypalFee]="stateS.paypalfee$ | async"
+    [contentType]="contentType"
+    [cartTotalPrice]="contentType == 'bulk' ? (stateS.bulkCartTotalPrice$ | async) : stateS.cartTotalPrice$ | async"
+    (addToCart)="cartS.addToCart($event)"
+    [paymentMethod]="stateS.paymentMethod$ | async"
+    [currencyExchangeRate]="stateS.currencyExchangeRateToDollar$ | async"
+    [regionIdToNameMap]="stateS.regionIdToRegionNameMap"
+    [checkoutFormState]="stateS.checkoutFormState$ | async"
+    [vat]="stateS.vatRate$ | async"
+    [buttonDisabled]="stateS.bulkCartEnoughItemsToPurchase$ | async"
+    (removeFromCart)="contentType == 'bulk' ?  cartS.removeFromCart($event, true) : cartS.removeFromCart($event)"
+    [checkoutFormStateErrorMsg]="stateS.checkoutFormStateErrorMsg$ | async"
+    (setAppropriateCartToShow)="setAppropriate.emit()"
+    (setFeeData)="stateS.feeData$.next($event)"
+    (changeCartAccountQuantity)="cartS.changeOrderQuantity($event)">
+</app-cart-ui>
+
+<!-- [buttonDisabled]="contentType == 'bulk' && !(stateS.bulkCartEnoughItemsToPurchase$ | async)" -->

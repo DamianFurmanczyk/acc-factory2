@@ -1,0 +1,35 @@
+.identity-form {
+    @include container(450px);
+    padding: 20px 0;
+
+    h3 {
+        margin-bottom: .7rem;
+    }
+
+    input, select {
+        width: 100%;
+        padding: .8rem .9rem .6rem .9rem;
+        border-width: 0;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+
+    label, small {
+        margin: 2.2rem -.4rem .5rem 0;
+        font-size: .85rem;
+        display: inline-block;
+        color: $darkGray3;
+    }
+
+    small {
+        margin: .8rem 0 4rem 0;
+
+        &.success {
+            color: $green;
+        }
+
+        &.error {
+            color: $purple;
+        }
+    }
+}

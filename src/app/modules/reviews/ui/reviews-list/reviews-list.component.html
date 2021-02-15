@@ -1,0 +1,56 @@
+<section class="reviews">
+  <div class="btns-wrapper">
+    <div class="reviews-sort">
+      <small>{{activeTranslation.reviews.sortingBtn['SORT BY']}}</small>
+
+      <p>{{activeSortingOption}}
+        <img src="assets/img/icons/chevron-down-solid.svg" class="icon icon--expand" alt="">
+      </p>
+
+      <ul>
+        <li
+        *ngFor="let sortingOption of remainingSortingOptions;
+        let i = index"
+        (click)="onChangeSortingOption(i); sort(sortingOption)"
+        >{{activeTranslation.reviews.sortingBtn[sortingOption]}}</li>
+      </ul>
+    </div>
+
+    <button (click)='onToggleAddReviewForm()'>
+      {{activeTranslation.reviews.writeBtn}}
+      <img src="assets/img/icons/pencil-alt-solid.svg" class="icon icon--pen" alt="">
+    </button>
+  </div>
+
+  <!-- <app-loader-spinner *ngIf="reviewsLoading"></app-loader-spinner> -->
+
+  <!-- <ng-container *ngIf="reviewsLoadingErr">
+    <p class="noInfo">
+      Couldn't retrieve reviews data from server.
+    </p>
+  </ng-container> -->
+
+
+  <ng-container *ngIf="sortedReviews.length == 0 || reviewsLoading">
+    <p style="text-align: center; padding: 6% 0;">
+      Loading...
+    </p>
+  </ng-container>
+
+  <ng-container *ngIf="sortedReviews.length != 0">
+    <div class="reviews-wrapper">
+      <div *ngFor="let review of sortedReviews" class="review">
+        <div class="review_header">
+          <img [src]="review.flag" alt="flag">
+          <span class="reviewer-name">{{review.author}}</span>
+          <span class="review-rating" [innerHTML]='starsMap[review.stars]'></span>
+        </div>
+        <div class="review_content">
+          {{review.tekst}}
+        </div>
+        <small class="review-date-added">{{review.created_at || review.updated_at}}</small>
+      </div>
+    </div>
+  </ng-container>
+
+</section>

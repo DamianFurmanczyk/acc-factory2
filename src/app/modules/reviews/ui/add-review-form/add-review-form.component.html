@@ -1,0 +1,26 @@
+<div class="popup-overlay"></div>
+
+<form class="add-review-form" [formGroup]="reviewForm" #form (submit)="presenter.submitAddReviewForm($event)">
+    <h2> Add review
+        <img (click)="hideFormAndToggleDisplayAfter()" src="assets/icons/times-solid.svg" class="icon icon--close" alt="close">
+    </h2>
+
+    <div class="rating-display">
+        <small>Rating</small>
+        <img src="assets/icons/star-solid.svg" alt=""  *ngFor="let item of presenter.stars; let i = index" (click)="presenter.onStarClick(i)" [ngClass]="['icon icon--star', item == 'active' ? 'active' : '']">
+    </div>
+
+    <div class="add-review-form_input-wrapper">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="author">
+    </div>
+
+    <div class="add-review-form_input-wrapper">
+        <label for="review">Review</label>
+        <textarea formControlName="tekst" id="review" cols="20" rows="8" placeholder="Type your review here"></textarea>
+    </div>
+
+    <button [disabled]="reviewForm.invalid || !presenter.starsTouched">
+        POST REVIEW
+    </button>
+</form>

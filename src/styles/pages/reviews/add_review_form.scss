@@ -1,0 +1,79 @@
+.add-review-form {
+    position: fixed;
+    z-index: 100;
+    background: #fff;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -200%);
+    transition: .4s;
+    opacity: .3;
+
+    padding: 2rem;
+    border-radius: 1.4rem;
+    width: 80%;
+    max-width: 470px;
+
+    &.active {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    
+    h2 {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        font-weight: bold;
+        span {
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 1.5rem;
+            margin-top: -.4rem;
+            display: inline-block;
+        }
+    }
+    .rating-display {
+        margin: 2rem 0;
+        text-align: center;
+        small {
+            display: block;
+            font-size: .8rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    input, textarea {
+        background: $lightGray;
+        border-radius: .4rem;
+        border-width: 0;
+        outline-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: .8rem;
+        padding: 1rem;
+    }
+
+    textarea {
+        font-size: 1rem;
+        padding: .5rem 1rem;
+    }
+
+    label {
+        display: block;
+        margin-bottom: .5rem;
+        font-size: .7rem;
+    }
+
+    button {
+        @include rounded_btn--blue;
+        width: 100%;
+        font-weight: 100;
+        letter-spacing: 1px;
+        font-size: .75rem;
+        padding: 1.1rem 0
+    }
+}
+
+.add-review-form_input-wrapper {
+    margin: 1.5rem 0;
+}

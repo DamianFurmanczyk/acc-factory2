@@ -1,0 +1,251 @@
+.main-footer {
+  .expendable-list {
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: .3s;
+    color: $gray3;
+    font-size: .85rem;
+  }
+
+  li.trigger {
+    height: 16px;
+    transition: .4s;
+    &.active {
+      .expendable-list {
+        height: 10px;
+        pointer-events: all;
+        opacity: 1;
+      }
+    }
+  }
+  margin-top: -1rem;
+    background: #fff;
+    &_content-wrapper {
+        @include flex-container;
+        max-width: 1250px;
+        align-items: center;
+        padding: 4rem 0 3rem 0;
+
+        * {
+          flex-basis: auto;
+        }
+    }
+
+    &_faq {
+        font-weight: 600;
+        margin: 2.3rem 6.5rem 0 2rem;
+        min-height: 240px;
+
+        li.trigger {
+            height: 16px;
+            transition: .4s;
+            &.active {
+              height: 48px;
+
+              .expendable-list {
+                height: 30px;
+                pointer-events: all;
+                opacity: 1;
+              }
+            }
+          }
+          .expendable-list {
+            display: inline-block;
+            line-height: 1.4;
+            margin-top: .5rem;
+
+            &.active {
+              margin-bottom: -1.4rem;
+            }
+          }
+
+          li {
+            margin-right: 1rem;
+          }
+
+          dd { padding: 0; }
+
+          li:nth-of-type(1) {
+            dd.active {
+              height: 38px;
+            }
+          }
+
+          li:nth-of-type(2) {
+            dd.active {
+              height: 35px;
+            }
+          }
+
+          li:nth-of-type(3) {
+            dd.active {
+              height: 64px;
+            }
+          }
+
+          li:nth-of-type(4) {
+            dd.active {
+              height: 50px;
+            }
+          }
+
+          li:nth-of-type(5) {
+            dd.active {
+              height: 30px;
+            }
+          }
+
+          dd {
+            line-height: 1.1;
+            font-weight: normal;
+            margin-top: -.3rem;
+            padding-right: 3rem;
+            max-width: 400px;
+            color: #7C7C7C;
+            font-size: .8rem;
+            font-weight: lighter;
+            height: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: .3s;
+
+            &.active {
+              pointer-events: all;
+              opacity: 1;
+            }
+          }
+
+        ul {
+            font-size: .75rem;
+            line-height: 2.8;
+            font-weight: bold;
+            letter-spacing: .05rem;
+        }
+
+        dt {
+            cursor: pointer;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.4rem;
+        }
+        dt {
+            line-height: 2.3;
+            font-size: .85rem;
+            letter-spacing: .5px;
+        }
+    }
+
+    &_links-list {
+        margin-top: -.5rem;
+        letter-spacing: .5px;
+        font-weight: 600;
+        line-height: 3;
+        font-size: 1.15rem;
+        ul {
+          margin-left: 1.5rem;
+        }
+    }
+
+    figure {
+        width: 400px;
+        img {
+            height: 80px;
+            display: block;
+            margin: 0 auto .8rem auto;
+        }
+        figcaption {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: .8rem;
+        }
+        p {
+            color: $gray3;
+            font-size: .7rem;
+            line-height: 1.6;
+        }
+    }
+}
+
+.links-lists-column {
+  display: flex;
+  margin-top: 1rem;
+  white-space: nowrap;
+
+  .trigger {
+    ul {
+      width: 100%;
+    }
+  }
+
+  &>ul {
+    &:first-of-type {
+      margin-right: 3rem;
+      margin-left: -8rem;
+    }
+    &:last-of-type {
+      margin-right: 1rem;
+    }
+
+  &>li {
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: .05rem;
+      margin-bottom: 2.4rem;
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .links-lists-column {
+    flex-direction: column;
+    text-align: center;
+    ul:nth-of-type(1) {
+      padding-left: 10rem;
+      margin-top: 2rem;
+    }
+  }
+  .main-footer {
+    .expendable-list {
+      li {
+        &:nth-of-type(1) {
+          margin-top: -2rem;
+        }
+        text-indent: -9.5rem;
+      }
+    }
+
+    &_faq {
+      display: none;
+    }
+
+    figure {
+      text-align: center;
+
+      img {
+        margin: 0 auto .8rem auto;
+      }
+    }
+
+    &_links-list {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    &_content-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+}
+
+@media (max-width: 450px) {
+  .main-footer figure p {
+    margin: 0 auto;
+    max-width: 260px;
+  }
+}

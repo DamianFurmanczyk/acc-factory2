@@ -1,0 +1,117 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'styles/colors';
+@import 'styles/typography';
+@import 'styles/mixins/';
+@import 'styles/normalize';
+@import 'styles/breakpoints';
+
+body {
+    font-family: 'Poppins' !important;
+    color: $black;
+    overflow-x: hidden;
+}
+
+.popup-overlay {
+  position: fixed;
+  background: transparentize($color: #102020, $amount: 0.2);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.icon {
+  cursor: pointer;
+  display: inline-block;
+
+  &--close {
+    float: right;
+    height: 17px;
+    margin-top: -4px;
+  }
+
+  &--pen {
+    height: 15px;
+    margin-top: -2px;
+    display: inline-block;
+    filter: invert(99%) sepia(99%) saturate(2%) hue-rotate(177deg) brightness(111%) contrast(100%);
+  }
+
+  &--star {
+    filter: invert(92%) sepia(0%) saturate(1642%) hue-rotate(151deg) brightness(89%) contrast(89%);
+    height: 20px;
+    display: inline-block;
+    margin-right: .2rem;
+
+    &.active {
+        filter: invert(83%) sepia(67%) saturate(1715%) hue-rotate(349deg) brightness(99%) contrast(93%);
+    }
+
+    &.icon--star-small {
+      height: 18px;
+      margin-right: .12rem;
+    }
+
+    &.icon--star-header {
+      filter: invert(45%) sepia(180%) saturate(2900%) hue-rotate(29deg) brightness(120%) contrast(150%);
+      margin-top: -2px;
+    }
+}
+
+.reviews-sort {
+  cursor: pointer !important;
+}
+
+.icon-rm {
+  text-shadow: 0 0 3px blue !important;
+}
+
+  &--arrow-right {
+    display: inline-block;
+    height: 32px;
+    margin-left: .12rem;
+    margin-top: -3px;
+  }
+
+  &--dropdown {
+    width: 14px;
+    transition: .2s;
+  }
+}
+
+.grayish-bg {
+    background: #F7F7F7;
+}
+
+.main-content {
+    width: calc(100% - 420px);
+    position: relative;
+    margin-right: 420px;
+}
+
+@media (max-width: $l1) {
+    .main-content:not(.main-content--medium-breakpoint) {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: $m1) {
+    .main-content {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 1600px) and (min-width: 1363px) {
+    .main-content.main-content--bulk {
+        width: calc(100% - 420px);
+        margin-right: 0;
+    }
+}
+
+@import 'styles/pages/';
+@import 'styles/shared/';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

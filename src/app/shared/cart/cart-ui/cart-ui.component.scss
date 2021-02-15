@@ -1,0 +1,5 @@
+.fa-trash:hover {
+  text-shadow: 0 2px 3px transparentize($color: #2A68ED, $amount: .6);
+  transition: .3s;
+  cursor: pointer;
+}

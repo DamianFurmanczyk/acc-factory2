@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+@mixin main-font {
+    font-family: 'Poppins';
+}
+
+@mixin heroNavLiSizedText {
+    font-size: 1.3rem;
+}

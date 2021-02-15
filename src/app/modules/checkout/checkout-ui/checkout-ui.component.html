@@ -1,0 +1,98 @@
+<a class="checkout_go-back" [routerLink]="['/routePath']" routerLinkActive="router-link-active">{{langActive.checkout.linkText}}</a>
+
+<section class="checkout">
+    <form [formGroup]="presenter.form" class="identity-form">
+        <h3 class="checkout_heading">{{langActive.checkout.form.h}}</h3>
+
+        <label for="name">{{langActive.checkout.form.inputs.name}}</label>
+        <input formControlName="fullname" id="name" type="text">
+
+        <label for="email">{{langActive.checkout.form.inputs.email}}</label>
+        <input formControlName="email" id="email" type="email">
+
+        <label>{{langActive.checkout.form.inputs.country}}</label>
+        <app-country-select
+            [countries]="countriesArr"
+            [usersCountry]="countriesObj[usersCountry]"
+            [usersCountryName]="usersCountryName"
+            (getVat)="getVat.emit($event)">
+        </app-country-select>
+
+        <!-- <label for="CompaniesNIP">Companies VAT</label>
+        <input formControlName="nip" id="CompaniesNIP" [placeholder]="'eg: ' + selectedCountryCode + '1234567890'" type="text">
+        <small [ngClass]="{'error': presenter.nipInputStatus == 'Error', 'success': presenter.nipInputStatus == 'Success'}">
+            <app-loader-comp *ngIf="presenter.showLoader"></app-loader-comp>
+            <span class="fa fa-check" *ngIf="presenter.nipInputStatus == 'Success'"></span>
+            <span class="fa fa-times" *ngIf="presenter.nipInputStatus == 'Error'"></span>
+            {{presenter.nipInputStatusText}}
+             </small> -->
+    </form>
+
+    <p style="margin: -2rem 0 3rem 0; height: 0;">{{formError}}</p>
+
+    <section class="order-summary">
+        <h4>Total cost <span> {{currencyMap[currency]}} {{cartTotalPrice + cartTotalPrice*(vat/100) +
+          (feeData.feeText == 'Paypal fee' ? cartTotalPrice*paypalFee['percentage'] : feeData.fee) | toFixed}}</span></h4>
+        <ul class="order-summary_list">
+            <li>Subtotal <span>{{cartTotalPrice | toFixed}}</span></li>
+            <li>{{feeData.feeText || 'Fee'}} <span>{{(feeData.feeText == 'Paypal fee' ? cartTotalPrice*paypalFee['percentage'] : feeData.fee) | toFixed}}</span></li>
+            <li>Vat% <span>{{cartTotalPrice * (vat/100) | toFixed}}</span></li>
+        </ul>
+
+
+        <!-- (click)="submitPayment();" -->
+        <button
+        *ngIf="!checkoutFormStateErrorMsg">
+          Buy now</button>
+
+          <!-- (click)="submitPayment();"  -->
+        <button
+        class="disabled" disabled="disabled"
+        *ngIf="checkoutFormStateErrorMsg">
+          {{checkoutFormStateErrorMsg}}</button>
+    </section>
+
+    <section class="payment" style="margin-top: 1rem;">
+        <h3 class="checkout_heading checkout_heading--last">{{langActive.checkout.paymentMethod.h}}</h3>
+
+        <div class="payment_methods-wrapper">
+
+            <figure class="payment-method" [ngClass]="{'active': paymentMethod == 'stripe'}">
+                <div (click)="setPaymentMethod('stripe')" class="payment-method_img-wrapper">
+                    <img src="assets/img/visa.svg" alt="Credit card">
+                    <img src="assets/img/mastercard.svg" alt="Credit card">
+                    <figcaption>
+                      {{langActive.checkout.paymentMethod.tiles.card}}
+                    </figcaption>
+                  </div>
+                </figure>
+                <!-- <figure class="payment-method inactive" [ngClass]="{'active': paymentMethod == 'bank'}">
+                  <div (click)="null;" class="payment-method_img-wrapper">
+                    <img src="assets/img/payment-bank-transfer.svg" alt="Bank transfer">
+                    <figcaption>
+                      Bank transfer
+                    </figcaption>
+                  </div>
+                </figure> -->
+                <!-- <figure class="payment-method" [ngClass]="{'active': paymentMethod == 'paypal'}">
+                  <div (click)="setPaymentMethod('paypal')" class="payment-method_img-wrapper">
+                    <img src="assets/img/paypal.svg" alt="Paypal">
+                    <figcaption>
+                      {{langActive.checkout.paymentMethod.tiles.paypal}}
+                    </figcaption>
+                  </div>
+            </figure> -->
+            <figure class="payment-method inactive" [ngClass]="{'active': paymentMethod == 'crypto'}">
+              <div (click)="null;" class="payment-method_img-wrapper">
+                <img src="assets/img/bitcoinTransp.svg" alt="Cryptocurrency">
+                <figcaption>
+                  {{langActive.checkout.paymentMethod.tiles.crypto}}
+                </figcaption>
+              </div>
+            </figure>
+
+        </div>
+
+    </section>
+
+</section>
